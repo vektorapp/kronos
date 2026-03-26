@@ -423,20 +423,30 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:16px;heigh
 .dsc-btn.sel-warm{background:rgba(255,170,0,0.15);border-color:var(--orange);color:var(--orange);font-weight:600}
 .dsc-btn.sel-good{background:rgba(0,214,143,0.15);border-color:var(--green);color:var(--green);font-weight:600}
 /* ===== LOGIN SCREEN ===== */
-#login-screen{position:fixed;inset:0;background:#0b0d1a;z-index:9999;display:flex;align-items:center;justify-content:center}
+#login-screen{position:fixed;inset:0;background:#0a0c18;z-index:9999;display:flex;align-items:center;justify-content:center;flex-direction:column}
 #login-screen.hidden{display:none}
-.login-box{background:#131629;border:1px solid #1f2444;border-radius:16px;padding:40px 44px;width:100%;max-width:380px;display:flex;flex-direction:column;gap:20px}
-.login-logo{text-align:center;margin-bottom:4px}
-.login-logo h1{font-size:28px;font-weight:700;color:#00e5ff;letter-spacing:-0.5px}
-.login-logo p{font-size:13px;color:#6b7db3;margin-top:4px}
-.login-field{display:flex;flex-direction:column;gap:6px}
-.login-field label{font-size:12px;color:#8892b0;font-weight:500;text-transform:uppercase;letter-spacing:.5px}
-.login-field input{background:#0b0d1a;border:1px solid #1f2444;border-radius:8px;padding:11px 14px;color:#e2e8f0;font-size:14px;outline:none;transition:border .2s}
-.login-field input:focus{border-color:#00e5ff}
-.login-btn{background:#00e5ff;color:#0b0d1a;border:none;border-radius:8px;padding:13px;font-size:14px;font-weight:700;cursor:pointer;transition:opacity .2s}
-.login-btn:hover{opacity:.85}
-.login-btn:disabled{opacity:.5;cursor:not-allowed}
-.login-error{font-size:12px;color:#ff4d6d;text-align:center;min-height:16px}
+.login-wrap{width:100%;max-width:320px;display:flex;flex-direction:column;align-items:center;gap:0}
+/* Icon + title above card */
+.login-header{display:flex;align-items:center;gap:14px;margin-bottom:18px}
+.kronos-icon{width:52px;height:52px;background:linear-gradient(135deg,#1e6fff,#0a3abf);border-radius:14px;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(30,111,255,0.35);flex-shrink:0}
+.login-header h1{font-size:26px;font-weight:800;color:#e2e8f0;letter-spacing:3px;margin:0}
+.login-subtitle{font-size:13px;color:#4a5580;margin-bottom:22px;text-align:center}
+/* Card */
+.login-card{background:#12152a;border:1px solid #1c2040;border-radius:16px;padding:28px 28px 24px;width:100%}
+.login-field{display:flex;flex-direction:column;gap:7px;margin-bottom:16px}
+.login-field label{font-size:11px;color:#6b7db3;font-weight:600;letter-spacing:1.2px;text-transform:uppercase}
+.login-field input{background:#0a0c18;border:1px solid #1c2040;border-radius:8px;padding:12px 14px;color:#e2e8f0;font-size:14px;outline:none;transition:border .2s}
+.login-field input:focus{border-color:#1e6fff}
+.login-divider{border:none;border-top:1px solid #1c2040;margin:4px 0 16px}
+.login-btn{background:linear-gradient(135deg,#1e6fff,#1458e0);color:#fff;border:none;border-radius:8px;padding:13px;font-size:14px;font-weight:700;cursor:pointer;transition:all .2s;width:100%;letter-spacing:.3px}
+.login-btn:hover{background:linear-gradient(135deg,#3d83ff,#1e6fff);box-shadow:0 4px 16px rgba(30,111,255,0.4)}
+.login-btn:disabled{opacity:.4;cursor:not-allowed}
+.login-error{font-size:12px;color:#ff4d6d;text-align:center;min-height:16px;margin-top:10px}
+/* Below card */
+.login-toggle{text-align:center;margin-top:18px;font-size:13px;color:#4a5580}
+.login-toggle a{color:#1e6fff;cursor:pointer;font-weight:600;text-decoration:none}
+.login-toggle a:hover{text-decoration:underline}
+.login-footer{text-align:center;margin-top:28px;font-size:11px;color:#252a45;letter-spacing:.4px}
 #sync-badge{position:fixed;bottom:16px;right:16px;background:#131629;border:1px solid #1f2444;border-radius:20px;padding:6px 14px;font-size:11px;color:#8892b0;display:flex;align-items:center;gap:6px;z-index:1000;cursor:pointer}
 #sync-badge:hover{border-color:#00e5ff;color:#00e5ff}
 #sync-dot{width:7px;height:7px;border-radius:50%;background:#00d68f;flex-shrink:0}
@@ -451,30 +461,47 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:16px;heigh
 
 <!-- LOGIN SCREEN -->
 <div id="login-screen">
-  <div class="login-box">
-    <div class="login-logo">
-      <h1>⚡ KRONOS</h1>
-      <p>Inteligência de Campanhas · Vektor OS</p>
+  <div class="login-wrap">
+    <!-- Header: ícone + nome (fora do card) -->
+    <div class="login-header">
+      <div class="kronos-icon">
+        <svg width="30" height="30" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="22" cy="22" r="19" stroke="white" stroke-width="1.2" stroke-opacity="0.5"/>
+          <line x1="22" y1="4" x2="22" y2="9" stroke="white" stroke-width="2" stroke-linecap="round"/>
+          <line x1="22" y1="35" x2="22" y2="40" stroke="white" stroke-width="2" stroke-linecap="round"/>
+          <line x1="4" y1="22" x2="9" y2="22" stroke="white" stroke-width="2" stroke-linecap="round"/>
+          <line x1="35" y1="22" x2="40" y2="22" stroke="white" stroke-width="2" stroke-linecap="round"/>
+          <line x1="22" y1="22" x2="22" y2="12" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+          <line x1="22" y1="22" x2="30" y2="22" stroke="white" stroke-width="2" stroke-linecap="round" stroke-opacity="0.8"/>
+          <circle cx="22" cy="22" r="2.5" fill="white"/>
+        </svg>
+      </div>
+      <h1>KRONOS</h1>
     </div>
-    <!-- Tabs login/signup -->
-    <div style="display:flex;gap:0;border:1px solid #1f2444;border-radius:8px;overflow:hidden;margin-bottom:4px">
-      <button id="tab-login" onclick="switchAuthTab('login')" style="flex:1;padding:9px;background:#00e5ff;color:#0b0d1a;border:none;font-size:13px;font-weight:700;cursor:pointer">Entrar</button>
-      <button id="tab-signup" onclick="switchAuthTab('signup')" style="flex:1;padding:9px;background:transparent;color:#8892b0;border:none;font-size:13px;font-weight:600;cursor:pointer">Criar conta</button>
+    <p class="login-subtitle">Entre na sua conta para continuar</p>
+    <!-- Card com os campos -->
+    <div class="login-card">
+      <div class="login-field">
+        <label>E-MAIL</label>
+        <input type="email" id="login-email" placeholder="seu@email.com" onkeydown="if(event.key==='Enter')authAction()">
+      </div>
+      <div class="login-field" style="margin-bottom:0">
+        <label>SENHA</label>
+        <input type="password" id="login-password" placeholder="••••••••" onkeydown="if(event.key==='Enter')authAction()">
+      </div>
+      <div class="login-field" id="confirm-field" style="display:none;margin-top:14px;margin-bottom:0">
+        <label>CONFIRMAR SENHA</label>
+        <input type="password" id="login-confirm" placeholder="••••••••" onkeydown="if(event.key==='Enter')authAction()">
+      </div>
+      <hr class="login-divider">
+      <button class="login-btn" id="login-btn" onclick="authAction()">Entrar</button>
+      <div class="login-error" id="login-error"></div>
     </div>
-    <div class="login-field">
-      <label>Email</label>
-      <input type="email" id="login-email" placeholder="seu@email.com" onkeydown="if(event.key==='Enter')authAction()">
+    <!-- Abaixo do card -->
+    <div class="login-toggle" id="login-toggle">
+      Não tem conta? <a onclick="switchAuthTab('signup')">Criar conta grátis</a>
     </div>
-    <div class="login-field">
-      <label>Senha</label>
-      <input type="password" id="login-password" placeholder="••••••••" onkeydown="if(event.key==='Enter')authAction()">
-    </div>
-    <div class="login-field" id="confirm-field" style="display:none">
-      <label>Confirmar Senha</label>
-      <input type="password" id="login-confirm" placeholder="••••••••" onkeydown="if(event.key==='Enter')authAction()">
-    </div>
-    <div class="login-error" id="login-error"></div>
-    <button class="login-btn" id="login-btn" onclick="authAction()">Entrar</button>
+    <div class="login-footer">KRONOS v1.0 · O tempo certo, na campanha certa</div>
   </div>
 </div>
 
@@ -5756,30 +5783,30 @@ async function uploadToGoogleAds() {
 // ===== SUPABASE INTEGRATION =====
 const SUPA_URL = 'https://qnxabfowdvohrolamktx.supabase.co';
 const SUPA_KEY = 'sb_publishable_OWpi6DYEuhNmbPY-eUZkzA_hqZ3BGXD';
-let supabase = null;
+let supaClient = null;
 let currentUser = null;
 let syncTimer = null;
 
 function initSupabase() {
-  supabase = window.supabase.createClient(SUPA_URL, SUPA_KEY);
-  supabase.auth.onAuthStateChange((event, session) => {
-    if (session?.user) {
-      currentUser = session.user;
-      showApp();
-    } else {
-      currentUser = null;
-      showLoginScreen();
+  try {
+    const client = window.supabase || window.supabaseJs;
+    if (!client || !client.createClient) {
+      document.getElementById('login-error').textContent = 'Erro: SDK não carregou. Verifique conexão.';
+      return;
     }
-  });
-  // Check existing session
-  supabase.auth.getSession().then(({ data: { session } }) => {
-    if (session?.user) {
-      currentUser = session.user;
-      showApp();
-    } else {
-      showLoginScreen();
-    }
-  });
+    supaClient = client.createClient(SUPA_URL, SUPA_KEY);
+    supaClient.auth.onAuthStateChange((event, session) => {
+      if (session?.user) { currentUser = session.user; showApp(); }
+      else { currentUser = null; showLoginScreen(); }
+    });
+    supaClient.auth.getSession().then(({ data: { session } }) => {
+      if (session?.user) { currentUser = session.user; showApp(); }
+      else { showLoginScreen(); }
+    });
+  } catch(e) {
+    console.error('Supabase init error:', e);
+    document.getElementById('login-error').textContent = 'Erro de conexão: ' + e.message;
+  }
 }
 
 let authMode = 'login';
@@ -5787,13 +5814,12 @@ let authMode = 'login';
 function switchAuthTab(mode) {
   authMode = mode;
   const isSignup = mode === 'signup';
-  document.getElementById('tab-login').style.background = isSignup ? 'transparent' : '#00e5ff';
-  document.getElementById('tab-login').style.color = isSignup ? '#8892b0' : '#0b0d1a';
-  document.getElementById('tab-signup').style.background = isSignup ? '#00e5ff' : 'transparent';
-  document.getElementById('tab-signup').style.color = isSignup ? '#0b0d1a' : '#8892b0';
   document.getElementById('confirm-field').style.display = isSignup ? 'flex' : 'none';
   document.getElementById('login-btn').textContent = isSignup ? 'Criar conta' : 'Entrar';
   document.getElementById('login-error').textContent = '';
+  document.getElementById('login-toggle').innerHTML = isSignup
+    ? 'Já tem conta? <a onclick="switchAuthTab(\'login\')">Entrar</a>'
+    : 'Não tem conta? <a onclick="switchAuthTab(\'signup\')">Criar conta grátis</a>';
 }
 
 function authAction() {
@@ -5816,7 +5842,7 @@ async function doLogin() {
   const errEl = document.getElementById('login-error');
   if (!email || !password) { errEl.textContent = 'Preencha email e senha.'; return; }
   btn.disabled = true; btn.textContent = 'Entrando...'; errEl.textContent = '';
-  const { error } = await supabase.auth.signInWithPassword({ email, password });
+  const { error } = await supaClient.auth.signInWithPassword({ email, password });
   if (error) {
     errEl.textContent = error.message === 'Invalid login credentials' ? 'Email ou senha incorretos.' : error.message;
     btn.disabled = false; btn.textContent = 'Entrar';
@@ -5833,7 +5859,7 @@ async function doSignup() {
   if (password !== confirm) { errEl.textContent = 'As senhas não coincidem.'; return; }
   if (password.length < 6) { errEl.textContent = 'Senha precisa ter pelo menos 6 caracteres.'; return; }
   btn.disabled = true; btn.textContent = 'Criando conta...'; errEl.textContent = '';
-  const { error } = await supabase.auth.signUp({ email, password });
+  const { error } = await supaClient.auth.signUp({ email, password });
   if (error) {
     errEl.textContent = error.message;
     btn.disabled = false; btn.textContent = 'Criar conta';
@@ -5845,7 +5871,7 @@ async function doSignup() {
 }
 
 async function doLogout() {
-  await supabase.auth.signOut();
+  await supaClient.auth.signOut();
   showToast('info', '👋 Sessão encerrada.');
 }
 
@@ -5859,14 +5885,14 @@ function setSyncStatus(status, label) {
 }
 
 async function pushToSupabase() {
-  if (!supabase || !currentUser) return;
+  if (!supaClient || !currentUser) return;
   setSyncStatus('syncing', 'Salvando...');
   try {
     const uid = currentUser.id;
     const stateData = JSON.parse(localStorage.getItem('vektor5_state') || '{}');
     const campData = JSON.parse(localStorage.getItem('vektor5_campaigns') || '[]');
-    const { error: e1 } = await supabase.from('vektor_state').upsert({ user_id: uid, data: stateData, updated_at: new Date().toISOString() }, { onConflict: 'user_id' });
-    const { error: e2 } = await supabase.from('vektor_campaigns').upsert({ user_id: uid, data: campData, updated_at: new Date().toISOString() }, { onConflict: 'user_id' });
+    const { error: e1 } = await supaClient.from('vektor_state').upsert({ user_id: uid, data: stateData, updated_at: new Date().toISOString() }, { onConflict: 'user_id' });
+    const { error: e2 } = await supaClient.from('vektor_campaigns').upsert({ user_id: uid, data: campData, updated_at: new Date().toISOString() }, { onConflict: 'user_id' });
     if (e1 || e2) throw new Error(e1?.message || e2?.message);
     setSyncStatus('ok', 'Sincronizado ✓');
   } catch(err) {
@@ -5876,12 +5902,12 @@ async function pushToSupabase() {
 }
 
 async function loadFromSupabase() {
-  if (!supabase || !currentUser) return;
+  if (!supaClient || !currentUser) return;
   setSyncStatus('syncing', 'Carregando...');
   try {
     const uid = currentUser.id;
-    const { data: stateRow } = await supabase.from('vektor_state').select('data').eq('user_id', uid).single();
-    const { data: campRow } = await supabase.from('vektor_campaigns').select('data').eq('user_id', uid).single();
+    const { data: stateRow } = await supaClient.from('vektor_state').select('data').eq('user_id', uid).single();
+    const { data: campRow } = await supaClient.from('vektor_campaigns').select('data').eq('user_id', uid).single();
     if (stateRow?.data && Object.keys(stateRow.data).length > 0) {
       localStorage.setItem('vektor5_state', JSON.stringify(stateRow.data));
       const parsed = stateRow.data;
